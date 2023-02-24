@@ -1,7 +1,7 @@
-import './App.css';
+import './App.scss';
 
 function App() {
-  return <div className="App">TasteBuzz</div>;
+  return <div className="App">FooDrop</div>;
 }
 
 export default App;
