@@ -1,7 +1,12 @@
+import RegisterPage from './pages/RegisterPage';
 import './App.scss';
 
 function App() {
-  return <div className="App">FooDrop</div>;
+  return (
+    <>
+      <RegisterPage />
+    </>
+  );
 }
 
 export default App;
