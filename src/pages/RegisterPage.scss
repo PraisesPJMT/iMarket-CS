@@ -1,0 +1,78 @@
+@import '../index.scss';
+
+#register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+
+  section {
+    width: 90%;
+    max-width: 800px;
+    margin: auto;
+    border-radius: 20px;
+    background: url('../assets/reg-cover.jpg');
+    background-size: cover;
+
+    .overlay {
+      background: linear-gradient(
+        90deg,
+        $green-color,
+        $green-color,
+        transparent
+      );
+      padding: 2rem;
+      border-radius: 20px;
+      color: #fff;
+
+      .header {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.8rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+
+        img {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  #register {
+    section {
+      width: 90%;
+      .overlay {
+        background: linear-gradient(
+          90deg,
+          $green-color,
+          $green-color,
+          $green-color,
+          transparent
+        );
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  #register {
+    display: flex;
+    min-height: 100vh;
+
+    section {
+      width: 95%;
+      border-radius: 10px;
+
+      .overlay {
+        background: $green-color;
+        border-radius: 10px;
+      }
+    }
+  }
+}
