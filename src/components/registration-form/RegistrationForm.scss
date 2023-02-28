@@ -5,6 +5,11 @@ form {
   flex-direction: column;
   gap: 0.9rem;
 
+  h1 {
+    text-align: center;
+    margin-top: 1rem;
+  }
+
   p {
     margin: 1rem 0;
     font-size: 0.9rem;

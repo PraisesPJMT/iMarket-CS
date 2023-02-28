@@ -17,9 +17,10 @@ import {
   PWD_REGEX,
 } from '../../utilities/AppData';
 import { registerUser } from '../../redux/user-slice/userSlice';
-import { Dispatch } from '@reduxjs/toolkit';
 
-const RegistrationForm: React.FC<{}> = () => {
+const RegistrationForm: React.FC<{ setSuccess: (value: boolean) => void }> = ({
+  setSuccess,
+}) => {
   // Registration Form State
   const [regFormState, setRegFormState] =
     useState<RegFormStateType>(initialRegFormState);
@@ -118,8 +119,11 @@ const RegistrationForm: React.FC<{}> = () => {
       // console.log(regFormState);
       dispatch(registerUser({ ...regFormState }));
       setRegFormState(initialRegFormState);
-    } else {
-      // console.log('Errors');
+      setSuccess(true);
+      setTimeout(() => {
+        setSuccess(false);
+      }, 5000);
+      // Navigate to login page
     }
   };
 

@@ -1,16 +1,33 @@
+import { useState } from 'react';
+import CheckIcon from '@mui/icons-material/Check';
 import RegistrationForm from '../components/registration-form/RegistrationForm';
 import './RegisterPage.scss';
 
 const RegisterPage: React.FC<{}> = () => {
+  const [success, setSuccess] = useState(false);
+
   return (
     <main id="register">
       <section>
         <div className="overlay">
           <div className="header">
-            <img src="./../assets/reg-cover.jpg" alt="Logo" />
+            <img src="logo.png" alt="Logo" />
             <p>FooDrop</p>
           </div>
-          <RegistrationForm />
+          {success ? (
+            <div className="reg-success">
+              <div>
+                <CheckIcon />
+              </div>
+              <h2>Successful!</h2>
+              <p>Your registration to <strong>FooDrop</strong> is Successful.</p>
+              <a href="/" className="link">
+                Log In
+              </a>
+            </div>
+          ) : (
+            <RegistrationForm setSuccess={setSuccess}/>
+          )}
         </div>
       </section>
     </main>
