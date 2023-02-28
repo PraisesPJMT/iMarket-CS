@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import CheckIcon from '@mui/icons-material/Check';
-import RegistrationForm from '../components/registration-form/RegistrationForm';
+import RegistrationForm from '../../components/registration-form/RegistrationForm';
+import Background1 from '../../assets/reg-cover.jpg';
 import './RegisterPage.scss';
 
 const RegisterPage: React.FC<{}> = () => {
@@ -8,7 +9,9 @@ const RegisterPage: React.FC<{}> = () => {
 
   return (
     <main id="register">
-      <section>
+      <section
+        style={{ background: `url(${Background1})`, backgroundSize: 'cover' }}
+      >
         <div className="overlay">
           <div className="header">
             <img src="logo.png" alt="Logo" />
@@ -20,13 +23,15 @@ const RegisterPage: React.FC<{}> = () => {
                 <CheckIcon />
               </div>
               <h2>Successful!</h2>
-              <p>Your registration to <strong>FooDrop</strong> is Successful.</p>
+              <p>
+                Your registration to <strong>FooDrop</strong> is Successful.
+              </p>
               <a href="/" className="link">
                 Log In
               </a>
             </div>
           ) : (
-            <RegistrationForm setSuccess={setSuccess}/>
+            <RegistrationForm setSuccess={setSuccess} />
           )}
         </div>
       </section>

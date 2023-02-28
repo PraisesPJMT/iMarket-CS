@@ -1,4 +1,4 @@
-@import '../index.scss';
+@import '../../index.scss';
 
 #register {
   display: flex;
@@ -11,8 +11,8 @@
     max-width: 800px;
     margin: auto;
     border-radius: 20px;
-    background: url('../assets/reg-cover.jpg');
-    background-size: cover;
+    // background: url('../../assets/reg-cover.jpg');
+    // background-size: cover;
 
     .overlay {
       background: linear-gradient(

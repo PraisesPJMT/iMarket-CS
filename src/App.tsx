@@ -1,4 +1,4 @@
-import RegisterPage from './pages/RegisterPage';
+import RegisterPage from './pages/register-page/RegisterPage';
 import './App.scss';
 
 function App() {
