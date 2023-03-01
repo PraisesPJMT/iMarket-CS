@@ -1,14 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { ThunkDispatch } from '@reduxjs/toolkit';
-import BadgeIcon from '@mui/icons-material/Badge';
-import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
-import EmailIcon from '@mui/icons-material/Email';
-import HomeWorkIcon from '@mui/icons-material/HomeWork';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import ErrorIcon from '@mui/icons-material/Error';
-import './RegistrationForm.scss';
 import { RegFormStateType } from '../../utilities/Types';
 import {
   EMAIL_REGEX,
@@ -17,6 +9,14 @@ import {
   PWD_REGEX,
 } from '../../utilities/AppData';
 import { registerUser } from '../../redux/user-slice/userSlice';
+import BadgeIcon from '@mui/icons-material/Badge';
+import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
+import EmailIcon from '@mui/icons-material/Email';
+import HomeWorkIcon from '@mui/icons-material/HomeWork';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import ErrorIcon from '@mui/icons-material/Error';
+import './RegistrationForm.scss';
 
 const RegistrationForm: React.FC<{ setSuccess: (value: boolean) => void }> = ({
   setSuccess,
