@@ -69,11 +69,6 @@
           $green-color,
           transparent
         );
-
-        .reg-success {
-          width: 280px;
-          margin-left: 2rem;
-        }
       }
     }
   }
@@ -91,11 +86,6 @@
       .overlay {
         background: $green-color;
         border-radius: 10px;
-
-        .reg-success {
-          width: 95%;
-          margin: 0 auto;
-        }
       }
     }
   }

@@ -23,12 +23,13 @@ const initialUserState = {
 // Actions
 const REGISTER_USER = 'REGISTER_USER';
 const LOGIN_USER = 'LOGIN_USER';
+const FORGOT_USER_PASSWORD = 'FORGOT_USER_PASSWORD';
 
 // User Registration Action
 export const registerUser = createAsyncThunk(
   REGISTER_USER,
   async (user: RegFormStateType) => {
-    console.log('User: ', user);
+    // console.log('User: ', user);
     const response = await fetch(BASE_URL + 'user/register', {
       method: 'POST',
       headers: {
@@ -47,13 +48,32 @@ export const registerUser = createAsyncThunk(
 export const loginUser = createAsyncThunk(
   LOGIN_USER,
   async (user: LoginFormStateType) => {
-    console.log('User: ', user);
-    const response = await fetch(BASE_URL + 'user/register', {
+    // console.log('User: ', user);
+    const response = await fetch(BASE_URL + 'user/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: new URLSearchParams({ ...user }),
+    });
+    const { status } = response;
+    const data = await response.json();
+    console.log('Status: ', status);
+    console.log('Data: ', data);
+  }
+);
+
+// Forgot User Password Action
+export const forgotUserPassword = createAsyncThunk(
+  FORGOT_USER_PASSWORD,
+  async (email: string) => {
+    // console.log('Email: ', email);
+    const response = await fetch(BASE_URL + 'user/forgot_password', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams(email),
     });
     const { status } = response;
     const data = await response.json();
@@ -90,6 +110,18 @@ const userSlice = createSlice({
         status: 'succeeded',
       }))
       .addCase(loginUser.rejected, (state) => ({
+        ...state,
+        status: 'failed',
+      }))
+      .addCase(forgotUserPassword.pending, (state) => ({
+        ...state,
+        status: 'pending',
+      }))
+      .addCase(forgotUserPassword.fulfilled, (state, { payload }) => ({
+        ...state,
+        status: 'succeeded',
+      }))
+      .addCase(forgotUserPassword.rejected, (state) => ({
         ...state,
         status: 'failed',
       }));
