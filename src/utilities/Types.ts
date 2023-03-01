@@ -10,3 +10,9 @@ export interface RegFormStateType {
   address: string;
   role: string;
 }
+
+// Login Form State Type
+export interface LoginFormStateType {
+  email: string;
+  password: string;
+}

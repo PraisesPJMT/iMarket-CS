@@ -11,6 +11,12 @@ export const initialRegFormState = {
   role: 'default',
 };
 
+// Initial Login Form State
+export const initialLoginFormState = {
+  email: '',
+  password: '',
+};
+
 // Regex pattern to test Email Address
 export const EMAIL_REGEX = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 

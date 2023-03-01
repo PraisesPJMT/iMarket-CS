@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { RegFormStateType } from '../../utilities/Types';
+import { RegFormStateType, LoginFormStateType } from '../../utilities/Types';
 
 //  Base URL
 const BASE_URL = 'http://127.0.0.1:3024/';
@@ -22,11 +22,31 @@ const initialUserState = {
 
 // Actions
 const REGISTER_USER = 'REGISTER_USER';
+const LOGIN_USER = 'LOGIN_USER';
 
 // User Registration Action
 export const registerUser = createAsyncThunk(
   REGISTER_USER,
   async (user: RegFormStateType) => {
+    console.log('User: ', user);
+    const response = await fetch(BASE_URL + 'user/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams({ ...user }),
+    });
+    const { status } = response;
+    const data = await response.json();
+    console.log('Status: ', status);
+    console.log('Data: ', data);
+  }
+);
+
+// User Login Action
+export const loginUser = createAsyncThunk(
+  LOGIN_USER,
+  async (user: LoginFormStateType) => {
     console.log('User: ', user);
     const response = await fetch(BASE_URL + 'user/register', {
       method: 'POST',
@@ -58,6 +78,18 @@ const userSlice = createSlice({
         status: 'succeeded',
       }))
       .addCase(registerUser.rejected, (state) => ({
+        ...state,
+        status: 'failed',
+      }))
+      .addCase(loginUser.pending, (state) => ({
+        ...state,
+        status: 'pending',
+      }))
+      .addCase(loginUser.fulfilled, (state, { payload }) => ({
+        ...state,
+        status: 'succeeded',
+      }))
+      .addCase(loginUser.rejected, (state) => ({
         ...state,
         status: 'failed',
       }));
